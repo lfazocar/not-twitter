@@ -4,6 +4,13 @@ class TweetsController < ApplicationController
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
+    # Pagination and search
+    if params[:query_text].present?
+      @tweets = @tweets.search_user(params[:query_text])
+      @pagy, @tweets = pagy(Tweet.all.search_user(params[:query_text]), items: 10)
+    else
+      @pagy, @tweets = pagy(Tweet.all, items: 10)
+    end
   end
 
   # GET /tweets/1 or /tweets/1.json
