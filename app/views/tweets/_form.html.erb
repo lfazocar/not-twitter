@@ -3,7 +3,7 @@
     <div style="color: red">
       <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
 
-      <ul>
+      <ul class="text-start">
         <% tweet.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -13,7 +13,7 @@
 
   <div class="mb-3">
     <%= form.label :description, "Description", class: "form-label" %>
-    <%= form.text_field :description, class: "form-control" %>
+    <%= form.text_area :description, class: "form-control", rows: "5" %>
   </div>
 
   <div class="mb-3">
