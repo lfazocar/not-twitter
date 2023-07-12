@@ -1,12 +1,10 @@
-<div id="<%= dom_id tweet %>">
-  <p>
-    <strong>Description:</strong>
-    <%= tweet.description %>
-  </p>
-
-  <p>
-    <strong>Username:</strong>
-    <%= tweet.username %>
-  </p>
-
-</div>
+<div id="<%= dom_id tweet %>" class="card my-3">
+  <div class="card-header">
+    By <strong><%= tweet.username %></strong>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= tweet.description %>
+    </p>
+  </div>
+<%# /div - Remember to complete the card when you render this partial %>

@@ -1,20 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
+<h1>Not Twitter</h1>
+
+<%= link_to "New tweet", new_tweet_path, class: "btn btn-primary my-3" %>
 
 <%= form_with url: tweets_path, method: :get do |form| %>
-  <%= form.text_field :query_text, placeholder: 'Search user', value: params[:query_text]%>
+  <%= form.text_field :query_text, placeholder: 'Search tweets by user', value: params[:query_text]%>
 <% end %>
 
-<div id="tweets">
+<div id="tweets" class="row row-cols-1 row-cols-lg-2">
   <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet, class: "btn btn-primary" %>
-    </p>
+    <div class="col align-self-center">
+      <%= render tweet %>
+        <div class="card-footer">
+          <%= link_to "Show this tweet", tweet, class: "card-link" %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New tweet", new_tweet_path %>
 
 <%== render partial: 'pagy_bootstrap', locals: {pagy: @pagy} if @pagy.pages > 1 %>
