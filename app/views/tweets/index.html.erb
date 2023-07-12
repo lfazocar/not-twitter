@@ -3,19 +3,18 @@
 <h1>Tweets</h1>
 
 <%= form_with url: tweets_path, method: :get do |form| %>
-  <%= form.text_field :query_text, placeholder: 'Query text', value: params[:query_text]%>
+  <%= form.text_field :query_text, placeholder: 'Search user', value: params[:query_text]%>
 <% end %>
 
 <div id="tweets">
   <% @tweets.each do |tweet| %>
-    <%= tweet.id %>
     <%= render tweet %>
     <p>
-      <%= link_to "Show this tweet", tweet %>
+      <%= link_to "Show this tweet", tweet, class: "btn btn-primary" %>
     </p>
   <% end %>
 </div>
 
 <%= link_to "New tweet", new_tweet_path %>
 
-<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+<%== render partial: 'pagy_bootstrap', locals: {pagy: @pagy} if @pagy.pages > 1 %>
